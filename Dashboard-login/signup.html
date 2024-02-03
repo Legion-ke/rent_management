@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="signUpForm">
+        <h2>Sign Up</h2>
+        <label for="signupUsername">Username:</label>
+        <input type="text" id="signupUsername" required>
+
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" required>
+
+        <label for="userRole">Select Role:</label>
+        <select id="userRole" required>
+            <option value="tenant">Tenant</option>
+            <option value="landlord">Landlord</option>
+        </select>
+        <p></p>
+
+        <button type="button" onclick="signUp()">Sign Up</button>
+
+        <p id="signUpSuccess" style="color: #4caf50; margin-top: 10px;"></p>
+        <p id="signUpError" class="error"></p>
+
+        <p>Already have an account? <a href="signin.html">Sign In</a></p>
+    </form>
+</body>
+</html>

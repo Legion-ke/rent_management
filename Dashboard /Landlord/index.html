@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landlord Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="landlordDashboard">
+        <h2>Welcome Landlord!</h2>
+
+        <div id="newTenantForm">
+            <h3>Create a New Tenant</h3>
+            <label for="newTenantUsername">Username:</label>
+            <input type="text" id="newTenantUsername" required>
+
+            <label for="newTenantPassword">Password:</label>
+            <input type="password" id="newTenantPassword" required>
+
+            <button type="button" onclick="createNewTenant()">Create Tenant</button>
+        </div>
+
+        <div id="tenantReport">
+            <h3>Tenant Report</h3>
+            <button type="button" onclick="generateTenantReport()">Generate Report</button>
+            <table id="tenantTable">
+                <!-- Table content will be dynamically generated -->
+            </table>
+        </div>
+
+        <button onclick="signOut()">Sign Out</button>
+    </div>
+
+    <script src="landlord.js"></script>
+</body>
+</html>
