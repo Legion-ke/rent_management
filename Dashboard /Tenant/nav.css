@@ -1,0 +1,41 @@
+/* Navbar styles */
+nav {
+    background-color: #4caf50; /* Green background color */
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Create space between links and forum messages */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+li {
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff; /* White text color */
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #45a049; /* Darker green on hover */
+}
+
+/* Forum messages section styles */
+.forum-messages {
+    color: #fff; /* White text color for forum messages */
+    font-size: 14px; /* Font size for forum messages */
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Display ellipsis for overflowing content */
+    white-space: nowrap; /* Do not wrap text */
+    flex-grow: 1; /* Allow the forum messages section to grow and take available space */
+    margin-left: 20px; /* Add margin to separate forum messages from navigation links */
+}

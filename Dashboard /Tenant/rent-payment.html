@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Payment and Balance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <include src="navbar.html"></include>
+    <section>
+        <!-- Content for Rent Payment and Balance section -->
+        <div id="tenantDashboard">
+            <h2>Welcome Tenant!</h2>
+    
+            <div id="rentBalance">
+                <h3>Rent Balance</h3>
+                <p id="tenantRentBalance">$0.00</p>
+            </div>
+    
+            <div id="rentPayment">
+                <h3>Pay Rent</h3>
+                <label for="paymentAmount">Amount:</label>
+                <input type="number" id="paymentAmount" required>
+                <button type="button" onclick="payRent()">Pay Rent</button>
+            </div>
+    </section>
+<script src="script.js"></script>
+</body>
+</html>

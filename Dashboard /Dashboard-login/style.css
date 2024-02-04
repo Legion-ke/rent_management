@@ -1,23 +1,38 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url(image.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 form {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust the alpha channel for background opacity */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
 
+/* Use flexbox to have label and input elements side by side */
 label, input {
-    display: block;
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
     margin-bottom: 10px;
+}
+
+label {
+    margin-bottom: 0; /* Remove bottom margin for label */
+}
+
+input {
+    margin-top: 5px; /* Add top margin for input */
 }
 
 button {

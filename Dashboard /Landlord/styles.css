@@ -1,0 +1,91 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* White background */
+    color: #333333; /* Dark text color */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: #4CAF50; /* Green background */
+    padding-top: 20px;
+    position: fixed;
+}
+
+.sidebar a {
+    padding: 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff; /* White text color */
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.sidebar button {
+    background-color: #45a049; /* Green button color */
+    color: #ffffff; /* White text color */
+    padding: 10px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Content styles */
+.content {
+    margin-left: 200px; /* Adjust margin to make space for the sidebar */
+    padding: 20px;
+}
+
+/* Form styles */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4CAF50; /* Green label color */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #4CAF50; /* Green border color */
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50; /* Green button color */
+    color: #ffffff; /* White text color */
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* List styles */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add more styles as needed */
