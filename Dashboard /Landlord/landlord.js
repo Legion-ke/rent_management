@@ -1,79 +1,68 @@
-const { Pool } = require('pg');
+const { Client } = require('pg');
 
-// Create a PostgreSQL connection pool
-const pool = new Pool({
-    user: 'youruser',
+// PostgreSQL connection configuration
+const dbConfig = {
+    user: 'postgres',
     host: 'localhost',
-    database: 'yourdatabase',
-    password: 'yourpassword',
+    database: 'rent_managent',
+    password: '198728',
     port: 5432,
-});
+};
 
-function createNewTenant() {
-    const newTenantUsername = document.getElementById('newTenantUsername').value;
-    const newTenantPassword = document.getElementById('newTenantPassword').value;
+// Create a single PostgreSQL client instance (connection pool)
+const client = new Client(dbConfig);
 
-    if (!newTenantUsername.trim() || !newTenantPassword.trim()) {
-        alert('Please enter both username and password for the new tenant.');
-        return;
+// Function to initialize the PostgreSQL connection pool
+async function initializePool() {
+    try {
+        await client.connect();
+        console.log('Connected to the database');
+    } catch (error) {
+        console.error('Error connecting to the database:', error);
+        throw error;
     }
-
-    // Insert the new tenant into the database
-    pool.query(
-        'INSERT INTO users (username, password, role) VALUES ($1, $2, $3)',
-        [newTenantUsername, newTenantPassword, 'tenant'],
-        (error, results) => {
-            if (error) {
-                console.error('Error creating new tenant:', error);
-                alert('Error creating new tenant. Please try again.');
-            } else {
-                alert('New tenant created successfully!');
-            }
-        }
-    );
 }
 
-function generateTenantReport() {
-    // Query the database to get tenants who have paid
-    pool.query(
-        'SELECT * FROM users WHERE role = $1',
-        ['tenant'],
-        (error, results) => {
-            if (error) {
-                console.error('Error generating tenant report:', error);
-                alert('Error generating tenant report. Please try again.');
-            } else {
-                displayTenantReport(results.rows);
-            }
-        }
-    );
+// Function to add a new tenant by the admin
+async function addTenant(username, password) {
+    try {
+        const result = await client.query(
+            'INSERT INTO users (username, password, role) VALUES ($1, $2, $3) RETURNING *',
+            [username, password, 'tenant']
+        );
+        return result.rows[0];
+    } catch (error) {
+        console.error('Error adding tenant:', error);
+        throw error;
+    }
 }
 
-function displayTenantReport(tenants) {
-    const tenantTable = document.getElementById('tenantTable');
-    tenantTable.innerHTML = ''; // Clear existing content
+// Function to handle the form submission
+async function createNewTenant() {
+    console.log('Form submission initiated');
 
-    // Create table header
-    const headerRow = tenantTable.insertRow(0);
-    const headers = ['Username', 'Role'];
-    headers.forEach((header, index) => {
-        const th = document.createElement('th');
-        th.innerHTML = header;
-        headerRow.appendChild(th);
-    });
+    const tenantUsername = document.getElementById('tenantUsername').value;
+    const tenantPassword = document.getElementById('tenantPassword').value;
 
-    // Populate the table with tenant data
-    tenants.forEach((tenant, index) => {
-        const row = tenantTable.insertRow(index + 1);
-        const cells = [tenant.username, tenant.role];
-        cells.forEach((cell, cellIndex) => {
-            const td = row.insertCell(cellIndex);
-            td.innerHTML = cell;
-        });
-    });
+    console.log('Tenant username:', tenantUsername);
+    console.log('Tenant password:', tenantPassword);
+
+    try {
+        // Ensure the client is connected before using it
+        await initializePool();
+
+        // Call the addTenant function
+        const newTenant = await addTenant(tenantUsername, tenantPassword);
+        console.log('New tenant added:', newTenant);
+        // You can perform additional actions here if needed
+    } catch (error) {
+        console.error('Error creating new tenant:', error);
+    } finally {
+        // Do not close the connection here to reuse the connection pool
+    }
 }
 
-function signOut() {
-    window.location.href = '../Dashboard-login/signin.html';
-}
-
+// Export addTenant function for external use
+module.exports = {
+    addTenant
+};

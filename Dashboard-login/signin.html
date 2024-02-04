@@ -15,6 +15,12 @@
         <label for="signinPassword">Password:</label>
         <input type="password" id="signinPassword" required>
 
+        <label for="userRole">Select Role:</label>
+        <select id="userRole" required>
+            <option value="tenant">Tenant</option>
+            <option value="landlord">Landlord</option>
+        </select>
+
         <button type="button" onclick="signIn()">Sign In</button>
         <p id="signInSuccess" style="color: #4caf50; margin-top: 10px;"></p>
 
@@ -22,6 +28,6 @@
 
         <p>Don't have an account? <a href="signup.html">Create a new account</a></p>
     </form>
-
+    <script src="signin.js"></script>
 </body>
 </html>

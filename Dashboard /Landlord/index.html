@@ -1,3 +1,5 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,31 +9,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="landlordDashboard">
-        <h2>Welcome Landlord!</h2>
+    <!-- Tenant Form -->
+    <form id="tenantForm">
+        <label for="tenantUsername">Username:</label>
+        <input type="text" id="tenantUsername" name="tenantUsername" required>
 
-        <div id="newTenantForm">
-            <h3>Create a New Tenant</h3>
-            <label for="newTenantUsername">Username:</label>
-            <input type="text" id="newTenantUsername" required>
+        <label for="tenantPassword">Password:</label>
+        <input type="password" id="tenantPassword" name="tenantPassword" required>
 
-            <label for="newTenantPassword">Password:</label>
-            <input type="password" id="newTenantPassword" required>
+        <button type="button" onclick="createNewTenant()">Create New Tenant</button>
+    </form>
 
-            <button type="button" onclick="createNewTenant()">Create Tenant</button>
-        </div>
+<script src="landlord.js"></script>
 
-        <div id="tenantReport">
-            <h3>Tenant Report</h3>
-            <button type="button" onclick="generateTenantReport()">Generate Report</button>
-            <table id="tenantTable">
-                <!-- Table content will be dynamically generated -->
-            </table>
-        </div>
-
-        <button onclick="signOut()">Sign Out</button>
-    </div>
-
-    <script src="landlord.js"></script>
 </body>
 </html>
