@@ -9,19 +9,19 @@
 <body>
     <form id="signInForm">
         <h2>Sign In</h2>
-        <label for="signinUsername">Username:</label>
-        <input type="text" id="signinUsername" required>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
 
-        <label for="signinPassword">Password:</label>
-        <input type="password" id="signinPassword" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
 
-        <button type="button" onclick="signIn()">Sign In</button>
+        <button type="button" onclick="login()">Sign In</button>
         <p id="signInSuccess" style="color: #4caf50; margin-top: 10px;"></p>
 
         <p id="signInError" class="error"></p>
 
         <p>Don't have an account? <a href="signup.html">Create a new account</a></p>
     </form>
-    <script src="signin.js"></script>
+    <script src="sign.js"></script>
 </body>
 </html>
