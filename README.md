@@ -1,4 +1,4 @@
-                                                ERENT
+                                                E-RENT
 This is a platform developed to bridge the gap involved during rent collection.
 Some of it's main features include:
 1.Rent record 
