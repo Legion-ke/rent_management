@@ -12,16 +12,26 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$username = $_POST['username'];
-$email = $_POST['email'];
-$houseNo = $_POST['houseNo'];
+// Sanitize user input
+$username = $conn->real_escape_string($_POST['username']);
+$email = $conn->real_escape_string($_POST['email']);
+$houseNo = $conn->real_escape_string($_POST['houseNo']);
 
-$sql = "INSERT INTO rent_management (username, email, house_no) VALUES ('$username', '$email', '$houseNo')";
+// Prepare SQL statement
+$sql = "INSERT INTO rent_management (username, email, house_no) VALUES (?, ?, ?)";
+$stmt = $conn->prepare($sql);
 
-if ($conn->query($sql) === TRUE) {
+// Bind parameters
+$stmt->bind_param("sss", $username, $email, $houseNo);
+
+// Execute the statement
+if ($stmt->execute()) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+// Close statement and connection
+$stmt->close();
 $conn->close();
+?>
