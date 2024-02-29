@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="signUpForm">
+        <h2>Sign Up</h2>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+
+        <button type="button" id="register" onclick="register()">Sign Up</button>
+
+        <p id="signUpSuccess" style="color: #4caf50; margin-top: 10px;"></p>
+        <p id="signUpError" class="error"></p>
+
+        <p>Already have an account? <a href="/Dashboard-login/signin.html">Sign In</a></p>
+    </form>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="sign.js"></script>   
+</body>
+
+</html>
