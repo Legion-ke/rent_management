@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repair</title>
+    <title>Tenants</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body> 
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="Tenants.html" onclick="showComponent('Tenants')">Tenants</a>
@@ -16,17 +16,25 @@
         <a href="Forum.html" onclick="showComponent('Forum')">Forum</a>
         <button onclick="logout()">Logout</button>
     </div>
-    <div>
-        <!-- 
-            To be fetched from db
-            *Create a form to assign repair   
-        -->
-        <form id="repairBooking"" action="post">
-        <label for="houseNo">House Number:</label> <br>
-        <input type="text" id="houseNo" name="houseNo" required>
-        <button id="submit">Initiate Repair</button>
-        </form>
-    </div>  
+    <!-- Main Content -->
+    <div class="content">
+    <form id="propertyForm"  method="post">
+        <label for="houseType">houseType</label>
+        <input type="text" id="houseType" name="houseType" required><br>
+        <button type="submit">Create vacant house</button>
+    </form>
+    <br><br>
+    <center>
+        <h2>House Types Code</h2>
+        <ul>
+            <li>1.Bed Sitter</li>
+            <li>2.One Bedroom</li>
+            <li>3.Two Bedroom</li>
+            <li>4.Three Bedroom</li>
+        </ul>
+    </center>
+    
     <script src="script.js"></script>
+    </div>
 </body>
 </html>

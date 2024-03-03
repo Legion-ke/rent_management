@@ -88,4 +88,14 @@ ul {
     padding: 0;
 }
 
-/* Add more styles as needed */
+#rentPayments {
+    text-align: center;
+    margin: 0 auto;
+    width: 50%; /* You can adjust the width as needed */
+}
+.forum-content {
+    margin: 0 auto;
+    width: 50%;
+    border: 1px solid #ccc; /* Light border */
+    padding: 20px;
+}

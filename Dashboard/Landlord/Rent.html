@@ -7,14 +7,65 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-       <!-- Sidebar -->
-       <div class="sidebar">
+    <!-- Sidebar -->
+    <div class="sidebar">
         <a href="Tenants.html" onclick="showComponent('Tenants')">Tenants</a>
+        <a href="property.html" onclick="showComponent('Property')">Property</a>
         <a href="Rent.html" onclick="showComponent('Rent')">Rent </a>
         <a href="Repair.html" onclick="showComponent('RepairBooking')">Repair Booking</a>
         <a href="Forum.html" onclick="showComponent('Forum')">Forum</a>
-        <button onclick="logout()">Logout</button>
+        <button onclick="logout()">Sign out</button>
     </div>
-    
+
+    <br> <!-- Added space between sidebar and rentPayments div -->
+
+    <div id="rentPayments">
+        <button onclick="generateRentReport()">Generate Rent Report</button>
+        <button onclick="generateRentPayments()">Generate Rent Payments</button>
+
+        <div id="rentReportTable"></div>
+        <div id="rentPaymentsImages"></div>
+
+        <script>
+        function generateRentReport() {
+            // Code to fetch rent report data from the database
+            // Placeholder comment: Fetch rent report data from the database
+            var rentData = /* Placeholder: Fetch rent report data from the database */;
+
+            var table = '<table>';
+            table += '<tr><th>User ID</th><th>Rent Payment</th></tr>';
+            rentData.forEach(function(item) {
+                table += '<tr><td>' + item.userid + '</td><td>' + item.rent + '</td></tr>';
+            });
+            table += '</table>';
+
+            document.getElementById('rentReportTable').innerHTML = table;
+        }
+
+        function generateRentPayments() {
+            // Code to fetch rent payments images from the database for each user
+            // Placeholder comment: Fetch rent payments images from the database for each user
+            var rentPaymentImages = /* Placeholder: Fetch rent payments images from the database for each user */;
+
+            var imagesHtml = '';
+            rentPaymentImages.forEach(function(item) {
+                imagesHtml += '<div>';
+                imagesHtml += '<img src="' + item.image + '" alt="Rent Payment Image">';
+                imagesHtml += '<button onclick="confirmPayment(' + item.userid + ')">Confirm Payment</button>';
+                imagesHtml += '</div>';
+            });
+
+            document.getElementById('rentPaymentsImages').innerHTML = imagesHtml;
+        }
+
+        function confirmPayment(userid) {
+            // Code to handle confirmation of rent payment for the specified user
+            // This function can perform actions like updating the database to mark the payment as confirmed
+            alert('Payment confirmed for User ID: ' + userid);
+        }
+        </script>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

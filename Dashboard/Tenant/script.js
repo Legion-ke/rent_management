@@ -93,5 +93,34 @@ function getCurrentUsername() {
     return 'tenant1'; // Replace with your authentication logic
 }
 
+function previewImage(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+        var output = document.getElementById('preview');
+        output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+function confirmRent() {
+    var rentImage = document.getElementById('rentImage').files[0];
+    if (rentImage) {
+        // Display loading animation
+        document.getElementById('loadingAnimation').style.display = 'block';
+
+        // Simulate confirmation process (setTimeout is used here, you should replace this with actual confirmation process)
+        setTimeout(function() {
+            // Hide loading animation
+            document.getElementById('loadingAnimation').style.display = 'none';
+
+            // Display confirmation message (you can replace this with your actual confirmation message)
+            alert('Rent confirmed successfully!');
+        }, 3000); // 3 seconds for simulation, replace with actual process duration
+    } else {
+        alert('Please upload an image for confirmation.');
+    }
+}
+
+
 // Initialize tenant dashboard
 loadTenantDashboard();
