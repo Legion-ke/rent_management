@@ -12,21 +12,49 @@
         <label for="email">Email:</label>
         <input type="text" id="email" name="email">
 
-        
         <label for="username">Username:</label>
         <input type="text" id="username" name="username">
-
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
 
-        <button type="button" id="register" onclick="register()">Sign Up</button>
+        <button type="button" id="register">Sign Up</button>
 
         <p id="signUpSuccess" style="color: #4caf50; margin-top: 10px;"></p>
         <p id="signUpError" class="error"></p>
 
         <p>Already have an account? <a href="/Dashboard-login/signin.html">Sign In</a></p>
     </form>
-</body>
 
+    <script>
+        document.getElementById('register').addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const data = { email, username, password };
+
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const responseData = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('signUpSuccess').textContent = responseData.message;
+                } else {
+                    document.getElementById('signUpError').textContent = responseData.error;
+                }
+            } catch (error) {
+                console.error('Error registering user:', error);
+                document.getElementById('signUpError').textContent = 'An error occurred. Please try again later.';
+            }
+        });
+    </script>
+</body>
 </html>
