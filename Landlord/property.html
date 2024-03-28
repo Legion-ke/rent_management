@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenants</title>
+    <link rel="stylesheet" href="Dashboard.css">
+    
+</head>
+<body> 
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Tenants.html" onclick="showComponent('Tenants')">Tenants</a>
+        <a href="property.html" onclick="showComponent('Property')">Property</a>
+        <a href="Rent.html" onclick="showComponent('Rent')">Rent </a>
+        <a href="Repair.html" onclick="showComponent('RepairBooking')">Repair Booking</a>
+        <a href="Forum.html" onclick="showComponent('Forum')">Forum</a>
+        <a href="Report.html" onclick="showComponent('Report')">Report</a>
+        <button onclick="logout()">Logout</button>
+        <!-- Add display button -->
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+        <form id="propertyForm"  method="post" action="propert.php">
+            <label for="houseType">houseType</label>
+            <input type="text" id="houseType" name="houseType" required><br>
+            <button type="submit">Create vacant house</button>
+        </form>
+        <br><br>
+            <h2>House Types Code</h2>
+            <ul>
+                <li>1.Bed Sitter</li>
+                <li>2.One Bedroom</li>
+                <li>3.Two Bedroom</li>
+                <li>4.Three Bedroom</li>
+            </ul>
+
+        <div>
+            <br>
+
+            <button onclick="displayHouses()">Display Houses</button>
+            <!-- Container to display data -->
+            <div id="houseData"></div>
+        </div>
+        <script>
+            function displayHouses() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("houseData").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "display_house.php", true);
+                xhttp.send();
+            }
+        </script>
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>

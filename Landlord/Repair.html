@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fetch and Initiate</title>
+<style>
+/* Centered hover menu */
+.menu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
+    padding: 20px;
+    z-index: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Center tableData div */
+#tableData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Full viewport height */
+}
+
+/* Sidebar */
+.content-container{
+    padding: 250px;
+}
+</style>
+<link rel="stylesheet" href="Dashboard.css">
+
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <a href="Tenants.html" onclick="showComponent('Tenants')">Tenants</a>
+    <a href="property.html" onclick="showComponent('Property')">Property</a>
+    <a href="Rent.html" onclick="showComponent('Rent')">Rent </a>
+    <a href="Repair.html" onclick="showComponent('RepairBooking')">Repair Booking</a>
+    <a href="Forum.html" onclick="showComponent('Forum')">Forum</a>
+    <button onclick="logout()">Log out</button>
+</div>
+
+<!-- Content Container -->
+<div class="content-container">
+    <button class="btn" onclick="fetchData()">Fetch</button>
+    <button class="btn" onclick="initiateMenu()">Initiate</button>
+
+    <div id="menu" class="menu">
+        <form>
+            <label for="houseNumber">House Number:</label><br>
+            <input type="text" id="houseNumber" name="houseNumber">
+            <button type="button" class="btn" onclick="initiate()">Initiate</button>
+        </form>
+    </div>
+
+    <div id="tableData"></div>
+</div>
+
+<script>
+function fetchData() {
+    document.getElementById("menu").style.display = "none"; // Hide menu if it's shown
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableData").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "repair-management.php", true);
+    xhttp.send();
+}
+
+function initiateMenu() {
+    document.getElementById("menu").style.display = "block"; // Show menu
+}
+
+function initiate() {
+    alert("Initiating for house number: " + houseNumber);
+}
+</script>
+
+</body>
+</html>

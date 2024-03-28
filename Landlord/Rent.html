@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landlord Rent Payments</title>
+    <link rel="stylesheet" href="Dashboard.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Tenants.html" onclick="showComponent('Tenants')">Tenants</a>
+        <a href="property.html" onclick="showComponent('Property')">Property</a>
+        <a href="Rent.html" onclick="showComponent('Rent')">Rent </a>
+        <a href="Repair.html" onclick="showComponent('RepairBooking')">Repair Booking</a>
+        <a href="Forum.html" onclick="showComponent('Forum')">Forum</a>
+        <a href="Report.html" onclick="showComponent('Report')">Report</a>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <center>
+        <h2>Landlord Rent Payments</h2>
+        <div id="rentPaymentsTable ">      
+      <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>House Number</th>
+                    <th>Payment Date</th>
+                    <th>Confirmed</th>
+                    <th>Receipts</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rent payments will be displayed here dynamically -->
+                <?php include 'fetch_rent_payments.php'; ?> <!-- Include PHP script to fetch rent payments -->
+            </tbody>
+        </table>
+    
+        </div>
+
+    </center>
+   
+
+</body>
+</html>

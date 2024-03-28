@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="Dashboard.css">
+    
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Tenants.html" onclick="showComponent('Tenants')">Tenants</a>
+        <a href="property.html" onclick="showComponent('Property')">Property</a>
+        <a href="Rent.html" onclick="showComponent('RentConfirmation')">Rent Confirmation</a>
+        <a href="Repair.html" onclick="showComponent('RepairBooking')">Repair Booking</a>
+        <a href="Forum.html" onclick="showComponent('Forum')">Forum</a>
+        <a href="Report.html" onclick="showComponent('Report')">Report</a>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <center>
+    <h2>Generate Reports</h2>
+    <button onclick="generateReport('tenants')">Tenants</button>
+    <button onclick="generateReport('houses')">Houses</button>
+    <button onclick="generateReport('rents')">Rents</button>
+    <button onclick="generateReport('issues')">Issues</button>
+
+    <!-- Container for displaying the report -->
+    <div id="reportContainer"></div>
+
+    <script>
+        function generateReport(reportType) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("reportContainer").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "generate_report.php?type=" + reportType, true);
+            xhttp.send();
+        }
+    </script>
+</center>
+</body>
+</html>

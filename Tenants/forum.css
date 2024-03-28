@@ -1,0 +1,352 @@
+:root {
+    --primary: 237, 94%, 81%;
+    --background: 266, 16%, 92%;
+    --background-secondary: 256, 12%, 12%;
+    --background-secondary-dark: 256, 10%, 10%;
+    --background-secondary-light: 257, 11%, 16%;
+    --text-primary: 0, 0%, 0%;
+    /* Colors */
+    --black: 0, 0%, 0%;
+    --white: 0, 0%, 100%;
+    --quite-gray: 0, 0%, 50%;
+    --grooble: 10, 28%, 93%;
+    /* Sizes */
+    --heading-large: 5.6rem;
+    --heading-medium: 3.6rem;
+    --heading-small: 2.4rem;
+    --paragraph: 1.11rem;
+    --navbar-buttons: 2.4rem;
+    /* misc */
+    --transition-main: .175, .685, .32;
+    /* Fonts */
+    --font-main: "Poppins";
+}
+
+/* Global Styles */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+html, body {
+    margin: 0;
+    width: 100%;
+    color: hsl(var(--text-primary));
+    font-family: var(--font-main);
+    background-color: hsl(var(--background));
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+h1 {
+    font-size: var(--heading-large);
+}
+h2 {
+    font-size: var(--heading-medium);
+}
+h3 {
+    font-size: var(--heading-small);
+}
+p {
+    margin: 0;
+    font-size: var(--paragraph);
+}
+a {
+    color: hsla(var(--primary), 1);
+    font-size: var(--paragraph);
+    text-decoration: underline;
+}
+a:visited {
+    color: hsla(var(--primary), .5);
+}
+
+/* Buttons */
+button {
+    padding: .8em 1.2em;
+    border: 1px solid hsl(var(--black));
+    background-color: hsl(var(--background));
+    font-size: var(--paragraph);
+    cursor: pointer;
+    outline: none;
+}
+button:focus {
+    box-shadow:
+            0 0 0 2px hsl(var(--black)),
+            0 0 0 3px hsl(var(--white));
+    border: 1px solid transparent;
+}
+
+/* Forms */
+form {
+    margin: 0;
+}
+input[type="number"],
+input[type="date"],
+input[type="file"],
+textarea,
+select {
+    padding: .8em 1.2em;
+    font-size: var(--paragraph);
+    background-color: hsl(var(--grooble));
+    border: 2px solid hsl(var(--grooble));
+    outline: none;
+}
+input[type="number"]:hover,
+input[type="number"]:focus,
+input[type="date"]:hover,
+input[type="date"]:focus,
+input[type="file"]:hover,
+input[type="file"]:focus,
+textarea:hover,
+textarea:focus,
+select:hover,
+select:focus {
+    box-shadow:
+            0 0 0 2px hsl(var(--black)),
+            0 0 0 3px hsl(var(--white));
+    border: 2px solid transparent;
+}
+
+/* Flexbox */
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flexbox-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flexbox-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.flexbox-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.flexbox-col-left {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.flexbox-col-right {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.flexbox-space-bet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar */
+#navbar {
+    top: 0;
+    padding: 0;
+    width: 5em;
+    height: 100vh;
+    position: fixed;
+    background-color: hsl(var(--background-secondary));
+    transition: width .35s cubic-bezier(var(--transition-main), 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#navbar:hover {
+    width: 16em;
+}
+.navbar-items {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.navbar-item {
+    padding: 0 .5em;
+    width: 100%;
+    cursor: pointer;
+}
+.navbar-item-inner {
+    padding: 1em 0;
+    width: 100%;
+    position: relative;
+    color: hsl(var(--quite-gray));
+    border-radius: .25em;
+    text-decoration: none;
+    transition: all .2s cubic-bezier(var(--transition-main), 1);
+}
+.navbar-item-inner:hover {
+    color: hsl(var(--white));
+    background: hsl(var(--background-secondary-light));
+    box-shadow: 0 17px 30px -10px hsla(var(--black), .25);
+}
+.navbar-item-inner-icon-wrapper {
+    width: calc(5rem - 1em - 8px);
+    position: relative;
+}
+.navbar-item-inner-icon-wrapper ion-icon {
+    position: absolute;
+    font-size: calc(var(--navbar-buttons) - 1rem);
+}
+.link-text {
+    margin: 0;
+    width: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all .35s cubic-bezier(var(--transition-main), 1);
+    overflow: hidden;
+    opacity: 0;
+}
+#navbar:hover .link-text {
+    width: calc(100% - calc(5rem - 8px));
+    opacity: 1;
+}
+
+/* Main */
+#main {
+    margin: 0 0 0 5em;
+    min-height: 150vh;
+}
+#main > h2 {
+    width: 80%;
+    max-width: 80%;
+}
+#main > p {
+    width: 80%;
+    max-width: 80%;
+}
+
+/* Sections */
+section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#forum {
+    margin-bottom: 20px;
+}
+#forum h3 {
+    text-align: center;
+}
+#forum textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+#forum button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#forum button:hover {
+    background-color: #45a049;
+}
+#forum p {
+    text-align: center;
+}
+#repair-section {
+    margin-left: auto; /* Set left margin to auto */
+    margin-right: auto; /* Set right margin to auto */
+    margin-top: 2em;
+    max-width: 600px; /* Limit the maximum width */
+}
+
+#repairForm {
+    max-width: 600px;
+    margin: 0 auto; /* Set margins to auto to center horizontally */
+    padding: 20px;
+}
+
+#repairForm h2 {
+    text-align: center;
+}
+
+#repairForm label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#repairForm input[type="number"],
+#repairForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+#repairForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#repairForm button:hover {
+    background-color: #45a049;
+}
+
+#repairForm p {
+    text-align: center;
+}
+
+
+
+
+#rent-section {
+    margin-left: 5em;
+    margin-top: 2em;
+}
+#rentForm {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#rentForm h2 {
+    text-align: center;
+}
+#rentForm label {
+    display: block;
+    margin-bottom: 10px;
+}
+#rentForm input[type="number"],
+#rentForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+#rentForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#rentForm button:hover {
+    background-color: #45a049;
+}
+#rentForm p {
+    text-align: center;
+}

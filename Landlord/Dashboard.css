@@ -1,0 +1,103 @@
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; 
+    color: #333333; 
+}
+table {
+    margin: 20px auto; 
+    width: 40%; 
+    border-collapse: collapse; 
+}
+th {
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: left;
+}
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.sidebar {
+    width: 0;
+    height: 100%;
+    background-color: #4CAF50;
+    padding-top: 20px;
+    position: fixed;
+    transition: width 0.3s;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar a {
+    padding: 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff;
+    display: block;
+}
+.sidebar a:hover {
+    background-color: #45a049;
+}
+.sidebar button {
+    background-color: #45a049; 
+    color: #ffffff; 
+    padding: 10px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.content {
+    margin-left: 220px; 
+}
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4CAF50;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+}
+button {
+    background-color: #4CAF50; /* Green button color */
+    color: #ffffff; /* White text color */
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* List styles */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

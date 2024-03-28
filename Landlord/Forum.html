@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link rel="stylesheet" href="Dashboard.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Tenants.html" onclick="showComponent('Tenants')">Tenants</a>
+        <a href="property.html" onclick="showComponent('Property')">Property</a>
+        <a href="Rent.html" onclick="showComponent('Rent')">Rent </a>
+        <a href="Repair.html" onclick="showComponent('RepairBooking')">Repair Booking</a>
+        <a href="Forum.html" onclick="showComponent('Forum')">Forum</a>
+        <a href="Report.html" onclick="showComponent('Report')">Report</a>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <div class="forum-content">
+        <h1>Forum Chats</h1>
+        <br>
+        <section>
+            <!-- Content for Forum section -->
+            <?php
+                session_start(); // Start session
+                if (isset($_SESSION['username'])) {
+                    echo "Welcome, " . $_SESSION['username']; // Display username
+                } else {
+                    echo "<a href='signin.html'>Sign In</a>"; // Display sign in link
+                }
+                ?>
+                <br>
+            <center>
+            <div id="forum">
+            <h3>Forum</h3>
+            <hr>
+                <div id="forumMessages"></div>
+            </div>
+
+            <!-- Form for posting messages -->
+            <form id="messageForm" method="POST">
+                <textarea name="message" id="message" placeholder="Type your message here"></textarea>
+                <br>
+                <input type="submit" value="Post Message">
+            </form>
+        </section>  
+    
+        <!-- JavaScript for fetching and posting messages -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Function to fetch messages using AJAX
+                function fetchMessages() {
+                    fetch('forum.php?action=getMessages')
+                        .then(response => response.json())
+                        .then(messages => {
+                            // Clear existing messages
+                            document.getElementById('forumMessages').innerHTML = "";
+                            // Append new messages
+                            messages.forEach(message => {
+                                document.getElementById('forumMessages').innerHTML += "<div>" + message + "</div>";
+                            });
+                        });
+                }
+    
+                // Fetch messages initially
+                fetchMessages();
+    
+                // Real-time updates - fetch messages every 5 seconds
+                setInterval(fetchMessages, 5000);
+
+                // Function to handle form submission
+                document.getElementById('messageForm').addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+                    let message = document.getElementById('message').value.trim();
+                    if (message !== '') {
+                        fetch('forum.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: 'message=' + encodeURIComponent(message),
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                // Clear the message input field after successful submission
+                                document.getElementById('message').value = '';
+                                fetchMessages(); // Fetch messages again to display the new message
+                            } else {
+                                console.error('Failed to post message');
+                            }
+                        })
+                        .catch(error => console.error('Error posting message:', error));
+                    }
+                });
+            });
+        </script>
+       
+    </div>
+    </center>
+    <script src="script.js"></script>
+</body>
+</html>

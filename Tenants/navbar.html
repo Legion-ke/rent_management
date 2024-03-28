@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link rel="stylesheet" href="forum.css">
+</head>
+<body>
+    <nav id="navbar">
+        
+        <ul class="navbar-items flexbox-col">
+          <li class="navbar-logo flexbox-left">
+            <a class="navbar-item-inner flexbox" href="navbar.html">
+              <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+                <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+                <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+              </svg>
+            </a>
+          </li>
+          <li class="navbar-item flexbox-left">
+            <a class="navbar-item-inner flexbox-left" href="rent-payment.html">
+              <div class="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="home-outline"></ion-icon>
+              </div>
+              <span class="link-text">Rent Payment</span>
+            </a>
+          </li>
+          <li class="navbar-item flexbox-left">
+            <a class="navbar-item-inner flexbox-left" href="repair-booking.html">
+              <div class="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="folder-open-outline"></ion-icon>
+              </div>
+              <span class="link-text">Repair</span>
+            </a>
+          </li>
+          <li class="navbar-item flexbox-left">
+            <a class="navbar-item-inner flexbox-left" href="forum.html">
+              <div class="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="chatbubbles-outline"></ion-icon>
+              </div>
+              <span class="link-text">Forum</span>
+            </a>
+          </li>
+        </ul>
+    </nav>
+    <section>
+        <?php
+            session_start(); // Start session
+            if (isset($_SESSION['username'])) {
+                echo "Welcome, " . $_SESSION['username']; // Display username
+            } else {
+                echo "<a href='signin.html'>Sign In</a>"; // Display sign in link
+            }
+            ?>  
+    </section>    
+    </div>
+</body>
+</html>
+
+
+            

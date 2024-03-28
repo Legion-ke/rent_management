@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landlord Dashboard</title>
+    <link rel="stylesheet" href="Dashboard.css">
+    <style>
+        .welcome-message {
+            text-align: center;
+            margin-top: 20px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Tenants.html" onclick="showComponent('Tenants')">Tenants</a>
+        <a href="property.html" onclick="showComponent('Property')">Property</a>
+        <a href="Rent.html" onclick="showComponent('RentConfirmation')">Rent Confirmation</a>
+        <a href="Repair.html" onclick="showComponent('RepairBooking')">Repair Booking</a>
+        <a href="Forum.html" onclick="showComponent('Forum')">Forum</a>
+        <a href="Report.html" onclick="showComponent('Report')">Report</a>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <section>
+        <div class="welcome-message">
+            <?php
+            session_start(); // Start session
+            if (isset($_SESSION['username'])) {
+                echo "Welcome, " . $_SESSION['username']; // Display username
+            } else {
+                echo "<a href='signin.html'>Sign In</a>"; // Display sign in link
+            }
+            ?>
+        </div>
+    </section>
+</body>
+</html>
